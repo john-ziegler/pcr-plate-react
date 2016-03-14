@@ -53,7 +53,7 @@ class PCRApp extends Component<{}, {}, State> {
 				isNew = false;
 				var sample = sampleList.get(key);
 				console.log(sample);
-				editingSample = { accession_number: key, concentration: sample.get('concentration'), chosen_volume: sample.get('chosen_volume'), suggested_volume: sample.get('suggested_volume'), assay_type: sample.get('assay_type'), patient_first_name: sample.get('patient_first_name'), patient_last_name: sample.get('patient_last_name')};
+				editingSample = { accession_number: key, concentration: sample.get('concentration'), chosen_volume: sample.get('chosen_volume'), suggested_volume: sample.get('suggested_volume'), assay_type: sample.get('assay_type')};
 				console.log(editingSample);
 			}
 		}
@@ -64,7 +64,7 @@ class PCRApp extends Component<{}, {}, State> {
 					<Plate samplePositions = {samplePositions} sampleList={this.state.samples} />
 					<NewSampleModal accession_number={editingSample.accession_number} 
 							chosen_volume={editingSample.chosen_volume} suggested_volume={editingSample.suggested_volume} location={this.state.editingLocation}
-							concentration={editingSample.concentration} assay_type={editingSample.assay_type} isNew={isNew} modalIsOpen={this.state.isModalOpen} patient_first_name={editingSample.patient_first_name} patient_last_name={editingSample.patient_last_name} />
+							concentration={editingSample.concentration} assay_type={editingSample.assay_type} isNew={isNew} modalIsOpen={this.state.isModalOpen} />
 				</div>);
 	}
 }

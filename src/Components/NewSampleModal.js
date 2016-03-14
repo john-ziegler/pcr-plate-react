@@ -9,11 +9,11 @@ export default class NewSampleModal extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {accession_number: props.accession_number, chosen_volume: props.chosen_volume, suggested_volume: props.suggested_volume, concentration: props.concentration, assay_type: props.assay_type, patient_first_name: props.patient_first_name, patient_last_name: props.patient_last_name};
+		this.state = {accession_number: props.accession_number, chosen_volume: props.chosen_volume, suggested_volume: props.suggested_volume, concentration: props.concentration, assay_type: props.assay_type};
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.setState({accession_number: nextProps.accession_number, chosen_volume: nextProps.chosen_volume, suggested_volume: nextProps.suggested_volume, concentration: nextProps.concentration, assay_type: nextProps.assay_type, patient_first_name: nextProps.patient_first_name, patient_last_name: nextProps.patient_last_name});
+		this.setState({accession_number: nextProps.accession_number, chosen_volume: nextProps.chosen_volume, suggested_volume: nextProps.suggested_volume, concentration: nextProps.concentration, assay_type: nextProps.assay_type});
 	}
 
 	closeModal() {
@@ -23,12 +23,12 @@ export default class NewSampleModal extends Component {
 	submitChanges () {
 		if(this.props.isNew) {
 			
-			dispatch({type: 'sample/create', accession_number: this.state.accession_number, location: this.props.location, chosen_volume: this.state.chosen_volume, concentration: this.state.concentration, assay_type:this.state.assay_type, patient_first_name: this.state.patient_first_name, patient_last_name: this.state.patient_last_name});
+			dispatch({type: 'sample/create', accession_number: this.state.accession_number, location: this.props.location, chosen_volume: this.state.chosen_volume, concentration: this.state.concentration, assay_type:this.state.assay_type});
 			
 			dispatch({type: 'sample/close-sample-modal'});
 		}
 		else {
-			dispatch({type: 'sample/update', accession_number: this.state.accession_number, chosen_volume: this.state.chosen_volume, concentration: this.state.concentration, assay_type: this.state.assay_type, patient_first_name: this.state.patient_first_name, patient_last_name: this.state.patient_last_name});
+			dispatch({type: 'sample/update', accession_number: this.state.accession_number, chosen_volume: this.state.chosen_volume, concentration: this.state.concentration, assay_type: this.state.assay_type});
 			dispatch({type: 'sample/close-sample-modal'});
 		}
 
@@ -69,9 +69,7 @@ export default class NewSampleModal extends Component {
 			<Modal.Header closeButton><h3>Edit/Add Sample: {this.state.accession_number}</h3></Modal.Header>
 			<Modal.Body>
 				<form className="form-horizontal">
-					<Input type="text" label="Patient First Name" value={this.state.patient_first_name} onChange={this.handleFirstNameChange.bind(this)} labelClassName="col-xs-4" wrapperClassName="col-xs-6"/>
-					<Input type="text" label="Patient Last Name" value={this.state.patient_last_name} onChange={this.handleLastNameChange.bind(this)} labelClassName="col-xs-4" wrapperClassName="col-xs-6"/>
-					<Input type="text" label="Accession Number" value={this.state.accession_number} onChange={this.handleAccNumChange.bind(this)} labelClassName="col-xs-4" wrapperClassName="col-xs-6"/>
+					<Input type="text" label="Sample ID" value={this.state.accession_number} onChange={this.handleAccNumChange.bind(this)} labelClassName="col-xs-4" wrapperClassName="col-xs-6"/>
 					<Input type="text" label="Chosen Volume" addonAfter="μL" value={this.state.chosen_volume} onChange={this.handleChosenVolChange.bind(this)} labelClassName="col-xs-4" wrapperClassName="col-xs-6"/>
 					<FormControls.Static label="Suggested Volume" addonAfter="μL" value={this.state.suggested_volume} labelClassName="col-xs-4" wrapperClassName="col-xs-6"/>
 					<Input type="text" label="Concetration" addonAfter="ng/μL" value={this.state.concentration} onChange={this.handleConcChange.bind(this)} labelClassName="col-xs-4" wrapperClassName="col-xs-6"/>
@@ -94,8 +92,6 @@ export default class NewSampleModal extends Component {
 }
 
 NewSampleModal.propTypes = {accession_number: React.PropTypes.string,
-							 patient_first_name: React.PropTypes.string,
-							 patient_last_name: React.PropTypes.string,
 							 chosen_volume: React.PropTypes.number,
 							 suggested_volume: React.PropTypes.number,
 							 concentration: React.PropTypes.number,

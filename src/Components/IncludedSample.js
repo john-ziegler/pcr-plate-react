@@ -8,8 +8,6 @@ const SampleRecord = Immutable.Record({
 	suggested_volume: 0,
 	concentration: 0,
 	assay_type: "NONE",
-	patient_first_name: "",
-	patient_last_name: "",
 });
 
 export default class IncludedSample extends SampleRecord {
@@ -17,18 +15,14 @@ export default class IncludedSample extends SampleRecord {
 	chosen_volume: number;
 	concentration: number;
 	assay_type: string;
-	patient_first_name: string;
-	patient_last_name: string;
 
-	constructor(acc_number: string, chosen_vol: number, conc: number, assay: string, patient_first_name, patient_last_name) {
+	constructor(acc_number: string, chosen_vol: number, conc: number, assay: string) {
 		super({
 			accession_number: acc_number, 
 			chosen_volume: chosen_vol,
 			suggested_volume: 150/chosen_vol,
 			concentration: conc,
 			assay_type: assay,
-			patient_first_name: patient_first_name,
-			patient_last_name: patient_last_name,
 		});
 	}
 }

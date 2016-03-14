@@ -24,7 +24,7 @@ class SampleStore extends ReduceStore<string, IncludedSample> {
 			case 'sample/delete':
 				return state.delete(action.accession_number);
 			case 'sample/update':
-				return state.set(action.accession_number, new IncludedSample(action.accession_number, action.chosen_volume, action.concentration, action.assay_type, action.patient_first_name, action.patient_last_name));
+				return state.set(action.accession_number, new IncludedSample(action.accession_number, action.chosen_volume, action.concentration, action.assay_type));
 		}
 	}
 }
@@ -33,19 +33,19 @@ function addAllSamples(state: State, response: object): State {
 	var samples = response.samples;
 	var newMap = {};
 	samples.forEach(function(sample) {
-		newMap[sample.accession_number] = new IncludedSample(sample.accession_number, sample.chosen_volume, sample.concentration, sample.assay_type, sample.patient_first_name, sample.patient_last_name);
+		newMap[sample.accession_number] = new IncludedSample(sample.accession_number, sample.chosen_volume, sample.concentration, sample.assay_type);
 	});
 	return fromJSOrdered(newMap);
 }
 
-function addSample(state: State, accession_number: string, chosen_volume: number, suggested_volume: number, concentration: number, assay_type: string, patient_first_name: string, patient_last_name: string): State {
+function addSample(state: State, accession_number: string, chosen_volume: number, suggested_volume: number, concentration: number, assay_type: string): State {
 	if(state.has(accession_number)) {
 		var rpt_accession_number = _getRepeatName(state, accession_number, 1);
 		console.log(rpt_accession_number);
-		var newSample = new IncludedSample(rpt_accession_number, chosen_volume, concentration, assay_type, patient_first_name, patient_last_name);
+		var newSample = new IncludedSample(rpt_accession_number, chosen_volume, concentration, assay_type);
 		return state.set(newSample.accession_number, newSample)
 	}
-	var newSample = new IncludedSample(accession_number, chosen_volume, concentration, assay_type, patient_first_name, patient_last_name);
+	var newSample = new IncludedSample(accession_number, chosen_volume, concentration, assay_type);
 	return state.set(newSample.accession_number, newSample);
 }
 

@@ -29,8 +29,6 @@ module.exports = {
 									chosen_volume: samples[sample].chosen_volume, 
 									suggested_volume: samples[sample].suggested_volume, 
 									assay_type: samples[sample].assay_type,
-									patient_first_name: samples[sample].patient_first_name,
-									patient_last_name: samples[sample].patient_last_name, 
 									plate_location: samplePositions[sample]});
 
 		}
