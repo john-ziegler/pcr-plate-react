@@ -10,6 +10,9 @@ To start the server:
 
 `npm start`
 
+
+**Background** - 8x12 PCR Plates are used in genonmic testing in labs everywhere and lab technologists spend hours recording test setup. This project was meant to demonstate automated creation of the pcr plates, and allowing the user to modify the setup (add/delete/move) as needed. 
+
 **Acknowledgements** - This little project was inspired by the [React DnD tutorial](http://gaearon.github.io/react-dnd/docs-tutorial.html) and the base of this repo was cloned from [react-hot-boilerplate](https://github.com/gaearon/react-hot-boilerplate)  
 
 
