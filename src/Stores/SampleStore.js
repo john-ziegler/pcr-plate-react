@@ -21,6 +21,8 @@ class SampleStore extends ReduceStore<string, IncludedSample> {
 				return addSample(state, action.accession_number, action.chosen_volume, action.concentration, action.assay_type, action.patient_first_name, action.patient_last_name);
 			case 'receive-all-samples':
 				return addAllSamples(state, action.response);
+			case 'run/change-run':
+				return addAllSamples(state, PCRAppAPI.sendReqForSamplesForRun(action.run_number));
 			case 'sample/delete':
 				return state.delete(action.accession_number);
 			case 'sample/update':
@@ -31,6 +33,8 @@ class SampleStore extends ReduceStore<string, IncludedSample> {
 
 function addAllSamples(state: State, response: object): State {
 	var samples = response.samples;
+	console.log(response.samples);
+	console.log(samples);
 	var newMap = {};
 	samples.forEach(function(sample) {
 		newMap[sample.accession_number] = new IncludedSample(sample.accession_number, sample.chosen_volume, sample.concentration, sample.assay_type);

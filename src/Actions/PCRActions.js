@@ -12,9 +12,6 @@ export type Action =
 		location: array,
 		chosen_volume: number,
 		assay_type: string,
-		concentration: number,
-		patient_first_name: string,
-		patient_last_name: string,
 	} |
 	{
 		type: 'sample/delete',
@@ -26,8 +23,6 @@ export type Action =
 		chosen_volume: number,
 		assay_type: string,
 		concentration: number,	
-		patient_first_name: string,
-		patient_last_name: string,
 	} |
 	{
 		type: 'sample/open-sample-modal',

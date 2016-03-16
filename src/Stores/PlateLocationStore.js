@@ -21,7 +21,11 @@ class PlateLocationStore extends MapStore<string, PlateLocation> {
 			case 'sample/delete':
 				return state.delete(action.accession_number);
 			case 'receive-all-samples':
+				// Note, not used in the example for convenience - generally we would load from here instead of 
+				// subscribing to the 'run/change-run' action
 				return loadAllPositions(state, action.response);
+			case 'run/change-run':
+				return loadAllPositions(state, PCRAppAPI.sendReqForSamplesForRun(action.run_number));
 			default:
 				return state;
 		

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 var PropTypes = React.PropTypes;
 import { ItemTypes, AssayColors } from '../Utils/Constants';
-import { DragSource } from 'react-dnd';
+import { DragSource} from 'react-dnd';
 
 const SampleSource = {
   beginDrag(props) {
@@ -24,12 +24,13 @@ class Sample extends Component {
   render() {
   	const {connectDragSource, isDragging, accession_number, chosen_volume, concentration, assay} = this.props;
     const color = this.determineColor(assay);
-    return connectDragSource(<div style={{ height: "100%", fontWeight: "bold", fontSize: "10px", textAlign: "center", backgroundColor: color, opacity: isDragging ? 0.5 : 1}}>
+    var content = connectDragSource(<div style={{ height: "100%", fontWeight: "bold", fontSize: "10px", textAlign: "center", backgroundColor: color, opacity: isDragging ? 0.5 : 1}}>
     			<div>{accession_number}</div>
     			<div>{chosen_volume} μL</div>
     			<div>{concentration} ng/μL</div>
     			<div>{assay}</div>
     		</div>);
+    return content;
   }
 }
 
