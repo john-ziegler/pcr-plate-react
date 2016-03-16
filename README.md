@@ -1,6 +1,6 @@
 # pcr-plate-react
 
-Web-based PCR Plate application built with React, React DnD, Touch backend, and Flux.
+Web-based PCR Plate application built with React, React DnD, Touch backend, and Flux. [Feel free to play with the example](http://john-ziegler.github.io/pcr-plate-react/)
 
 To begin:
 
