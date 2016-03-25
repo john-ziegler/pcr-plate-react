@@ -48,8 +48,8 @@ class Plate extends Component {
 	        height: '80%',
 	        minHeight: '575px',
 	        minWidth: '1000px',
-	        display: 'flex',
-	        flexWrap: 'wrap'
+	        display: '-webkit-flex',
+	        WebkitFlexWrap: 'wrap'
 	      }}>
 	        {wells}
 	      </div>
